@@ -1,0 +1,51 @@
+/* Google Font Family - font-family: 'Staatliches', cursive; */
+
+*{
+    font-family: 'Staatliches', cursive; 
+}
+.btn{
+    margin: 5px;
+}
+
+.btn-primary{
+    font-size: 24px;
+}
+
+.btn-send{
+    font-size: 18px;
+}
+
+h2 {
+    margin: 5px;
+}
+
+#animalNew{
+    margin: 5px;
+}
+
+#buttonAdd{
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+#buttonGenerator{
+    margin-right: 5px;
+}
+
+body {
+background-image: url(../images/leaves.png);
+}
+
+.userInputRow{
+    margin-bottom: 5px;
+    justify-content: center;
+}
+
+img{
+    max-width:100%;
+    height:auto;
+}
+
+.ratings{
+    margin-bottom: 15px;
+    font-size: 20px;
+}

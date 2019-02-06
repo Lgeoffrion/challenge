@@ -1,20 +1,23 @@
 //Animal Array for initial buttons
-var animalsArray = [
+var topics = [
     "cat",
     "dog",
     "elephant",
     "monkey",
     "zebra",
-    "cow",
+    "horse",
     "wolf",
     "hamster",
-    "eagle"
+    "panda",
+    "polar bear",
+    "bear",
+    "lion"
 ];
 
 //generate buttons based off initial array
 $(document).ready(function () {
-    for (var i = 0; i < animalsArray.length; i++) {
-        $("#buttonsGoHere").append("<button type='button' onclick='searchGif(\"" + animalsArray[i] + "\")' class='btn btn-primary' value=' " + animalsArray[i] + "'> " + animalsArray[i] + " </button>");
+    for (var i = 0; i < topics.length; i++) {
+        $("#buttonsGoHere").append("<button type='button' onclick='searchGif(\"" + topics[i] + "\")' class='btn btn-primary' value=' " + topics[i] + "'> " + topics[i] + " </button>");
     }
     
 });
@@ -32,6 +35,7 @@ $("#buttonAdd").on("click", function () {
     if (userInput) {
         $('#buttonsGoHere').append("<button type='button' onclick='searchGif(\"" + userInput + "\")' class='btn btn-primary' value=' " + userInput + "'> " + userInput + " </button>");
     }
+    $("#buttonGenerator")[0].reset();
 });
 
 
@@ -55,9 +59,9 @@ function displayGif(response) {
     var results = response.data;
     for (var i = 0; i < results.length; i++) {
         var rating = "<div class='ratings'> Rating:  " + (results[i].rating) + " </div>";
-        var image = rating + '<img src= " ' + response.data[i].images.fixed_height_still.url +
+        var image ='<img src= " ' + response.data[i].images.fixed_height_still.url +
             '" data-still=" ' + response.data[i].images.fixed_height_still.url +
-            ' " data-animate=" ' + response.data[i].images.fixed_height.url + '" data-state="still" class="gif" style= "width:300px; height:300px">';
+            ' " data-animate=" ' + response.data[i].images.fixed_height.url + '" data-state="still" class="gif" style= "width:380px;">' + rating;
 
         image = "<div class='col-md-4'>" + image + "</div>";
         $('#gifsGoHere').append(image);
