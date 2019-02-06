@@ -19,7 +19,7 @@ $(document).ready(function () {
     for (var i = 0; i < topics.length; i++) {
         $("#buttonsGoHere").append("<button type='button' onclick='searchGif(\"" + topics[i] + "\")' class='btn btn-primary' value=' " + topics[i] + "'> " + topics[i] + " </button>");
     }
-    
+
 });
 
 //gif generator click function
@@ -59,7 +59,7 @@ function displayGif(response) {
     var results = response.data;
     for (var i = 0; i < results.length; i++) {
         var rating = "<div class='ratings'> Rating: " + (results[i].rating) + " </div>";
-        var image ='<img src= " ' + response.data[i].images.fixed_height_still.url +
+        var image = '<img src= " ' + response.data[i].images.fixed_height_still.url +
             '" data-still=" ' + response.data[i].images.fixed_height_still.url +
             ' " data-animate=" ' + response.data[i].images.fixed_height.url + '" data-state="still" class="gif" style= "width:380px;">' + rating;
 
@@ -68,7 +68,7 @@ function displayGif(response) {
     }
 
 
- 
+
     //Pause Gifs and change animation status
     $(".gif").on("click", function () {
 
