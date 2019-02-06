@@ -58,7 +58,7 @@ function displayGif(response) {
     $("#gifsGoHere").empty();
     var results = response.data;
     for (var i = 0; i < results.length; i++) {
-        var rating = "<div class='ratings'> Rating:  " + (results[i].rating) + " </div>";
+        var rating = "<div class='ratings'> Rating: " + (results[i].rating) + " </div>";
         var image ='<img src= " ' + response.data[i].images.fixed_height_still.url +
             '" data-still=" ' + response.data[i].images.fixed_height_still.url +
             ' " data-animate=" ' + response.data[i].images.fixed_height.url + '" data-state="still" class="gif" style= "width:380px;">' + rating;
@@ -67,6 +67,8 @@ function displayGif(response) {
         $('#gifsGoHere').append(image);
     }
 
+
+ 
     //Pause Gifs and change animation status
     $(".gif").on("click", function () {
 
@@ -82,3 +84,4 @@ function displayGif(response) {
         }
     });
 }
+
