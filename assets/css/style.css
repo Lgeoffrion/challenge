@@ -3,8 +3,33 @@
 *{
     font-family: 'Staatliches', cursive; 
 }
+
+.circle{
+    /* background-color: #0000ff; */
+}
+
 .btn{
     margin: 5px;
+}
+
+.buttonsGoHere{
+    display: inline-block;
+}
+
+textarea{
+    margin: 0px 5px;
+    resize: none;
+    position: relative;
+    top: 10px;
+    width: 165px;
+}
+
+.clearAll{
+    background-color: red;
+}
+
+.arrayTitle{
+    padding: 0;
 }
 
 .btn-primary{

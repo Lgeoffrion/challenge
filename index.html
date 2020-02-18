@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Giftastic | Homework 6</title>
+    <title>Interview Challenge</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
@@ -18,26 +18,51 @@
 <body>
 
     <div class="container">
-        <!-- Gif Button Area -->
-        <div class="row buttonRow">
-            <div id="buttonsGoHere"></div>
-        </div>
-        <!-- Add button area -->
-        <div class="row userInputRow">
-            <div id="buttonLabel">
-                <h2>Add An Animal:</h2>
-            </div>
-            <form id="buttonGenerator">
-                <input id="animalNew" type="text" class="form-control" required="required" data-error="Please add an animal">
-                <div class="help-block with-errors"></div>
-            </form>
-            <!-- Submit button -->
-            <input type="submit" id="buttonAdd" class="btn btn-success btn-send" value="Submit">
-        </div>
-        <!-- Gif display area -->
-        <div class="row" id="gifsGoHere">
 
+        <div class="row buttonRow">
+            <div id="buttonsGoHere">
+                <button class="clearAll">Clear All</button>
+                <button class="shapeGenerator" value="circle">50 Circles</button>
+                <button class="shapeGenerator" value="square">50 Squares</button>
+                <button class="singleGenerator" value="circle">Circle Generator</button><textarea id="circleText" rows="1" cols="4" placeholder="Enter Radius 1-100"></textarea>
+                <button class="singleGenerator" value="square">Square Generator</button><textarea id="squareText" rows="1" cols="4" placeholder="Enter Side Length 1-100"></textarea>
+            </div>
         </div>
+
+        <div class="row shapeReadout">
+            <div id="circleReadout col-6">
+            </div>
+            <div id="squareReadOut col-6">
+            </div>
+        </div>
+        <div class="row arrayReadout">
+            <div class="arrayTitle col-1"><p>Circle Sizes: </p></div>
+            <div class="circleArrayReadout col-9"></div>
+        </div>
+        <div class="row arrayReadout">
+            <div class="arrayTitle col-1"><p>Square Sizes: </p></div>
+            <div class="squareArrayReadout col-9"></div>
+        </div>
+        <div class="row buttonRow2">
+            <div id="buttonsGoHere2">
+                <button class="arrayArrange" value="circle">Re-Order Circles</button>
+                <button class="arrayArrange" value="square">Re-Order Squares</button>
+                <button class="arrayArrange" value="both">Re-Order Both</button>
+            </div>
+        </div>
+
+        <div class="row" id="shapesGoHere">
+            <div class="col-6" id="circlesGoHere"></div>
+            <div class="col-6" id="squaresGoHere"></div>
+        </div>
+
+        <div class="row singleShape">
+            <div id="singleCircle" class="col-4">
+            </div>
+            <div id="singleSquare" class="col-4">
+            </div>
+        </div>
+
     </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
