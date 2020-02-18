@@ -25,11 +25,34 @@
                 <button class="shapeGenerator" value="circle">50 Circles</button>
                 <button class="shapeGenerator" value="square">50 Squares</button>
                 <button class="singleGenerator" value="circle">Circle Generator</button><textarea id="circleText" rows="1" cols="4" placeholder="Enter Radius 1-100"></textarea>
-                <button class="singleGenerator" value="square">Square Generator</button><textarea id="squareText" rows="1" cols="4" placeholder="Enter Side Length 1-100"></textarea>
+                <button class="singleGenerator" value="square">Square Generator</button><textarea id="squareText" rows="1" cols="4" placeholder="Enter Side Length 1-200"></textarea>
+                <button class="partyMode">Party Mode!</button>
+                <button class="partyOn">Party Stop?</button>
             </div>
         </div>
 
         <div class="row shapeReadout">
+            <div id="circleReadout col-6">
+            </div>
+            <div id="squareReadOut col-6">
+            </div>
+        </div>
+
+        <div class="row singleReadout">
+            <div class="col-6 soloReadouts">
+                <div class="col-3">Single Circle: </div>
+                <div class="col-8" id="singleCircleReadout">
+                </div>
+            </div>
+            <div class="col-6 soloReadouts">
+                <div class="col-3">Single Square: </div>
+                <div class="col-8" id="singleSquareReadOut">
+                </div>
+            </div>
+        </div>
+
+        <div class="row shapeReadout">
+            <div class="row arrayHeader"><p>50 Shape Array Read-Out</p></div>
             <div id="circleReadout col-6">
             </div>
             <div id="squareReadOut col-6">

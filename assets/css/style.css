@@ -32,46 +32,19 @@ textarea{
     padding: 0;
 }
 
-.btn-primary{
-    font-size: 24px;
+.arrayHeader{
+    margin-left: 0px;
 }
 
-.btn-send{
-    font-size: 18px;
+.arrayHeader p{
+    margin-bottom: 0;
 }
 
-h2 {
-    margin: 5px;
-}
-
-#animalNew{
-    margin: 5px;
-}
-
-#buttonAdd{
-    margin-top: 0px;
-    margin-bottom: 0px;
-}
-#buttonGenerator{
-    margin-right: 5px;
+.soloReadouts .col-3{
+    float: left;
 }
 
 body {
 background-image: url(../images/leaves.png);
 }
 
-.userInputRow{
-    margin-bottom: 5px;
-    justify-content: center;
-}
-
-img{
-    max-width:100%;
-    height:auto;
-}
-
-.ratings{
-    margin-bottom: 15px;
-    font-size: 20px;
-    float: left;
-}

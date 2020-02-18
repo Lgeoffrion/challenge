@@ -2,6 +2,7 @@
 var circleArray = [];
 var squareArray = [];
 var classNamer = null;
+var partyInterval;
 
 //random number generator
 function numberGenerator(shape, i) {
@@ -13,8 +14,7 @@ function numberGenerator(shape, i) {
         drawCircle(idName, ranNum)
     } else {
         drawSquare(idName, ranNum)
-    }
-    
+    } 
 }
 
 //Generate shapes
@@ -97,14 +97,17 @@ function drawSquare (idName, ranNum){
 
 //clear all button
 $(".clearAll").on("click", function () {
-    $('#circlesGoHere').empty();
-    $('#squaresGoHere').empty();
-    circleArray = [];
-    squareArray = [];
-    $('.circleArrayReadout').empty()
-    $('.squareArrayReadout').empty()
-    $('#singleCircle').empty()
-    $('#singleSquare').empty()
+    location.reload();
+    // $('#circlesGoHere').empty();
+    // $('#squaresGoHere').empty();
+    // circleArray = [];
+    // squareArray = [];
+    // $('.circleArrayReadout').empty()
+    // $('.squareArrayReadout').empty()
+    // $('#singleCircle').empty()
+    // $('#singleSquare').empty()
+    // $('#singleCircleReadout').empty()
+    // $('#singleSquareReadOut').empty()
 });
 
 
@@ -141,55 +144,114 @@ $(".arrayArrange").on("click", function () {
 });
 
 
+//single shape generator
 $(".singleGenerator").on("click", function () {
     var type = $(this).val();
     var size = $(this).next('textarea').val();
     $(this).next('textarea').val('');
     var idName = 'soloShape'
     console.log('type:', type, 'size:', size);
+
     if (type == 'circle'){
+        var circleInfo = '<p>Size='+size+', Area='+(size * 2 * Math.PI).toFixed(2)+'</p>'
+        $('#singleCircleReadout').empty().append(circleInfo)
         drawCircle(idName, size, type)
     }else{
+        var squareInfo = '<p>Size='+size+', Area='+(size * size)+'</p>'
+        $('#singleSquareReadOut').empty().append(squareInfo)
         drawSquare(idName, size, type)
     }
 
 });
 
-
-
-
-
-
-
-
-
-//submit button click handler
-$("#buttonAdd").on("click", function () {
-    var userInput = $('#animalNew').val();
-
-    if (userInput) {
-        $('#buttonsGoHere').append("<button type='button' onclick='searchGif(\"" + userInput + "\")' class='btn btn-primary' value=' " + userInput + "'> " + userInput + " </button>");
+var partyCounter = 0;
+$(".partyMode").on("click", function () {
+    partyInterval = setInterval(partyMode, 500);
+    partyCounter++;
+    if (partyCounter == 1){
+        $(".partyMode").html("Party Harder?");
     }
-    $("#buttonGenerator")[0].reset();
+    if (partyCounter == 2){
+        $(".partyMode").html("Hit it Again!");
+        $(".partyOn").attr("disabled", true).html("Can't Stop Won't Stop");
+    }
+    if (partyCounter == 3){
+        $(".partyMode").html("Kick It Up Another Notch");
+    }
+    if (partyCounter == 4){
+        $(".partyMode").html("You Want Another?");
+    }
+    if (partyCounter == 5){
+        $(".partyMode").attr("disabled", true).html("Hit the clear button Party Animal");
+    }
+});
+
+function partyMode(){
+    $('#circlesGoHere').empty();
+    $('#squaresGoHere').empty();
+    circleArray = [];
+    squareArray = [];
+    $('.circleArrayReadout').empty()
+    $('.squareArrayReadout').empty()
+    for (i=0; i < 50; i++){
+        partynumberGenerator(circleArray, i);
+        partynumberGenerator(squareArray, i); 
+    }
+    displayArrays();
+};
+
+$(".partyOn").on("click", function () {
+    partyCounter = 0;
+    $(".partyMode").html("Party Mode!");
+    clearInterval(partyInterval);
 });
 
 
 
+//draw circle
+function partydrawCircle (idName, ranNum){
+    let prettyColors1 = Math.floor(Math.random(1) * 255);
+    let prettyColors2 = Math.floor(Math.random(1) * 255);
+    let prettyColors3 = Math.floor(Math.random(1) * 255);
+    var makeShape = ('<canvas class="'+classNamer+'" id="'+idName+'" width="210" height="210"></canvas>')
+    $('#shapesGoHere').append(makeShape);
+    var c = document.getElementById(""+idName+"");
+    var ctx = c.getContext("2d");
+    ctx.beginPath();
+    ctx.arc(105, 105, ranNum, 0, 2 * Math.PI);
+    ctx.fillStyle = 'rgb('+prettyColors1+','+prettyColors2+','+prettyColors3+')';
+    ctx.fill();
+    ctx.lineWidth = 3;
+    ctx.strokeStyle = 'rgb('+prettyColors1+','+prettyColors2+','+prettyColors3+')';
+    ctx.stroke();
+}
 
+//draw square
+function partydrawSquare (idName, ranNum){
+    let prettyColors1 = Math.floor(Math.random(1) * 255);
+    let prettyColors2 = Math.floor(Math.random(1) * 255);
+    let prettyColors3 = Math.floor(Math.random(1) * 255);
+    var makeShape = ('<canvas class="'+classNamer+'" id="'+idName+'" width="110" height="110"></canvas>')
+    $('#shapesGoHere').append(makeShape);
+    var c = document.getElementById(""+idName+"");
+    var ctx = c.getContext("2d");
+    ctx.beginPath();
+    ctx.rect(5, 5, ranNum, ranNum);
+    ctx.fillStyle = 'rgb('+prettyColors1+','+prettyColors2+','+prettyColors3+')';
+    ctx.fill();
+    ctx.lineWidth = 3;
+    ctx.strokeStyle = 'rgb('+prettyColors1+','+prettyColors2+','+prettyColors3+')';
+    ctx.stroke();
+}
 
-    //Pause Gifs and change animation status
-    $(".gif").on("click", function () {
+function partynumberGenerator(shape, i) {
+    let ranNum = Math.floor(Math.random(1) * 100);
+    shape.push(ranNum);
+    var idName = (''+classNamer+i+'')
 
-        var state = $(this).attr("data-state");
-
-        if (state === "still") {
-            $(this).attr("src", $(this).attr("data-animate"));
-            $(this).attr("data-state", "animate");
-        }
-        else {
-            $(this).attr("src", $(this).attr("data-still"));
-            $(this).attr("data-state", "still");
-        }
-    });
-
-
+    if (shape == circleArray){
+        partydrawCircle(idName, ranNum)
+    } else {
+        partydrawSquare(idName, ranNum)
+    } 
+}
